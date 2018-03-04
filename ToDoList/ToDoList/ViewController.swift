@@ -30,8 +30,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        return cell
+        let cell: UITableViewCell?
+        if indexPath.row < 3{
+            cell = tableView.dequeueReusableCell(withIdentifier: "toDoCell", for: indexPath) as! ToDoViewCell
+        }else{
+            cell = tableView.dequeueReusableCell(withIdentifier: "toDidCell", for: indexPath) as! ToDidViewCell
+        }
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
