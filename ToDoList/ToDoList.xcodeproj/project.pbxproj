@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2964C519204E75DA0076E5B4 /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2964C518204E75DA0076E5B4 /* AddViewController.swift */; };
 		296BA13F2046AEBA00922D81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296BA13E2046AEBA00922D81 /* AppDelegate.swift */; };
 		296BA1412046AEBA00922D81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296BA1402046AEBA00922D81 /* ViewController.swift */; };
 		296BA1442046AEBA00922D81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 296BA1422046AEBA00922D81 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2964C518204E75DA0076E5B4 /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		296BA13B2046AEBA00922D81 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		296BA13E2046AEBA00922D81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		296BA1402046AEBA00922D81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				296BA1472046AEBA00922D81 /* LaunchScreen.storyboard */,
 				296BA14A2046AEBA00922D81 /* Info.plist */,
 				296BA1552046D44D00922D81 /* ToDoViewCell.swift */,
+				2964C518204E75DA0076E5B4 /* AddViewController.swift */,
 			);
 			path = ToDoList;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 			files = (
 				296BA1412046AEBA00922D81 /* ViewController.swift in Sources */,
 				296BA13F2046AEBA00922D81 /* AppDelegate.swift in Sources */,
+				2964C519204E75DA0076E5B4 /* AddViewController.swift in Sources */,
 				296BA1562046D44D00922D81 /* ToDoViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
