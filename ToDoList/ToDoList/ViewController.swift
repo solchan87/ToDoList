@@ -8,14 +8,19 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource{
 
     @IBOutlet var tableView: UITableView!
+    @IBOutlet weak var calendarView: UICollectionView!
+    
+    var selectedCell: CalendarViewCell!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        calendarView.delegate = self
+        calendarView.dataSource = self
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
     }
@@ -58,7 +63,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         header?.textLabel?.textColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 23
+        return 50
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -68,7 +73,55 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 45
     }
-
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 100
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let dateCell = calendarView.dequeueReusableCell(withReuseIdentifier: "dateCell", for: indexPath) as! CalendarViewCell
+        
+        return dateCell
+    }
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let cellWidth: CGFloat = (calendarView.frame.size.width - 20) / 7
+        let cellHeight: CGFloat = calendarView.frame.size.height / 2
+        let size = CGSize(width: cellWidth, height: cellHeight)
+        return size
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if selectedCell != nil{
+            selectedCell.dateLb.backgroundColor = UIColor.clear
+        }
+        
+        selectedCell = calendarView.cellForItem(at: indexPath) as! CalendarViewCell
+        selectedCell.dateLb.layer.cornerRadius = selectedCell.dateLb.frame.size.width / 2
+        selectedCell.dateLb.clipsToBounds = true
+        selectedCell.dateLb.backgroundColor = .green
+        
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        targetContentOffsetForProposedContentOffset proposedContentOffset: CGPoint
+    ) -> CGPoint {
+        
+    }
 
 }
 
